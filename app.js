@@ -17,7 +17,7 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + "/signup.html" );
 });
 
-//Using bod-parser
+//Using body-parser
 app.use(bodyParser.urlencoded({extended: true}));
 
 //The public folder which holds the CSS and external files
