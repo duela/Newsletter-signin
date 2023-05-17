@@ -4,7 +4,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("node:https");
-var port = 3000;
+const port = 3000;
 const app = express();
 
 //Listening on port 3000 and if it goes well then logging a message saying that the server is running
@@ -20,7 +20,7 @@ app.get('/', function(req, res){
 //Using bod-parser
 app.use(bodyParser.urlencoded({extended: true}));
 
-//The public folder which holds the CSS
+//The public folder which holds the CSS and external files
 app.use(express.static('public'));
 
 //Uploading the data to the server
