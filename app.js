@@ -48,7 +48,7 @@ app.post('/', function(req, res){
   //Setting up MailChimp
   const key = api.key();
   const url = api.urlLink();
-  console.log(key + " : " + url);
+  //console.log(key + " : " + url);
   const options = {
     method: "POST",
     auth: key
