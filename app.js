@@ -4,7 +4,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("node:https");
-const api = require(__dirname + "/secret/key.js");
+const api = require(__dirname + "/key.js");
 const port = 3000;
 const app = express();
 
