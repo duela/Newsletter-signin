@@ -4,6 +4,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("node:https");
+const api = require(__dirname + "/key.js");
 const port = 3000;
 const app = express();
 
@@ -17,7 +18,7 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + "/signup.html" );
 });
 
-//Using bod-parser
+//Using body-parser
 app.use(bodyParser.urlencoded({extended: true}));
 
 //The public folder which holds the CSS and external files
@@ -45,13 +46,15 @@ app.post('/', function(req, res){
   }
   const jsonData = JSON.stringify(data);
   //Setting up MailChimp
-  const urlLink = "https://us8.api.mailchimp.com/3.0/lists/c837660108"
+  const key = api.key();
+  const url = api.urlLink();
+  //console.log(key + " : " + url);
   const options = {
     method: "POST",
-    auth: "Duela:3df5b20a3f26a5073412fb05bbf48de7-us8"
+    auth: key
   }
   //Uploading the data to the server
-  const request = https.request(urlLink, options, function(response){
+  const request = https.request(url, options, function(response){
     console.log('Status code: ' + response.statusCode);
    if (response.statusCode === 200) {
      res.sendFile(__dirname + "/success.html");
